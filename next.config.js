@@ -16,6 +16,8 @@ module.exports = {
   images: {
     domains: [
       'd1slj7rdbjyb5l.cloudfront.net',
+      'www.totalwine.com',
+      'totalwine.com',
       'cdn-tp1.mozu.com',
       'cdn-tp2.mozu.com',
       'cdn-tp3.mozu.com',
