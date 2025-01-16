@@ -34,6 +34,9 @@ interface SelectedFulfillmentOption<T extends Location | LocationCustom> {
 export const useProductDetailTemplate = (props: UseProductDetailTemplateProps) => {
   const { product, purchaseLocation } = props
   const [currentProduct, setCurrentProduct] = useState<ProductCustom>(product)
+  const selectedOptions = product?.options?.filter((option) =>
+    option?.values?.some((val) => val?.isSelected)
+  )
   const [updatedShopperEnteredValues, setUpdatedShopperEnteredValues] = useState<
     ProductOptionSelectionInput[]
   >([])
@@ -48,6 +51,21 @@ export const useProductDetailTemplate = (props: UseProductDetailTemplateProps) =
   useEffect(() => {
     setCurrentProduct(product)
   }, [product?.productCode])
+
+  useEffect(() => {
+    if (selectedOptions && selectedOptions?.length > 0) {
+      setUpdatedShopperEnteredValues(
+        selectedOptions?.map((option) => {
+          const selected = option?.values?.find((value) => value?.isSelected)
+          return {
+            attributeFQN: option?.attributeFQN,
+            value: selected?.value,
+            shopperEnteredValue: selected?.shopperEnteredValue,
+          }
+        })
+      )
+    }
+  }, [])
 
   useEffect(() => {
     if (purchaseLocation?.name || selectedFulfillmentOption?.location?.name) {
