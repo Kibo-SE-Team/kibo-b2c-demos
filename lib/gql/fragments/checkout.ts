@@ -117,6 +117,10 @@ export const baseCheckoutFragment = /* GraphQL */ `
       }
       couponCode
     }
+    discountThresholdMessages {
+      message
+      showOnCheckout
+    }
 
     billingInfo {
       billingContact {

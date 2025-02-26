@@ -84,5 +84,9 @@ export const cartDetails = /* GraphQL */ `
     items {
       ...cartItemDetails
     }
+    discountThresholdMessages {
+      message
+      showInCart
+    }
   }
 `

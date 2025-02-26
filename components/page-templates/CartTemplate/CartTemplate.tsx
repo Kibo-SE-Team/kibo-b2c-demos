@@ -11,6 +11,7 @@ import {
   useTheme,
   Divider,
   useMediaQuery,
+  Alert,
 } from '@mui/material'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -61,6 +62,8 @@ const CartTemplate = (props: CartTemplateProps) => {
   const cartItems = cartGetters.getCartItems(cart)
 
   const locationCodes = orderGetters.getFulfillmentLocationCodes(cartItems as CrCartItem[])
+
+  const discountThresholdMessages = cartGetters.getDiscountThresholdMessages(cart)
 
   const { data: locations } = useGetStoreLocations({ filter: locationCodes })
   const { data: purchaseLocation } = useGetPurchaseLocation()
@@ -184,6 +187,18 @@ const CartTemplate = (props: CartTemplateProps) => {
       {!!cart?.items?.length && (
         <>
           <Grid item xs={12} md={8} sx={{ paddingRight: { md: 2 } }}>
+            {/* Discount Threshold Messages */}
+            {discountThresholdMessages && discountThresholdMessages.length > 0 && (
+              <Box display="flex" flexDirection="column" gap={1}>
+                {discountThresholdMessages.map((msg, index) =>
+                  msg ? (
+                    <Alert key={index} severity="info" sx={{ marginBottom: 2 }}>
+                      {msg.message}
+                    </Alert>
+                  ) : null
+                )}
+              </Box>
+            )}
             <CartItemList
               cartItems={cartItems}
               fulfillmentLocations={

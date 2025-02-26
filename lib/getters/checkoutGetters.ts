@@ -134,6 +134,13 @@ const getDiscountedSubtotal = (checkout: Checkout) => {
   return checkout.itemLevelProductDiscountTotal + checkout?.orderLevelProductDiscountTotal
 }
 
+const getDiscountThresholdMessages = (checkout: Checkout) => {
+  const discountThresholdMessages = checkout?.discountThresholdMessages?.filter(
+    (message) => message?.showOnCheckout
+  )
+  return discountThresholdMessages
+}
+
 export const checkoutGetters = {
   buildItemsGroupFromCheckoutGroupings,
   formatDestinationAddress,
@@ -150,4 +157,5 @@ export const checkoutGetters = {
   getFormattedDate,
   isSingleShippingItem,
   getDiscountedSubtotal,
+  getDiscountThresholdMessages,
 }

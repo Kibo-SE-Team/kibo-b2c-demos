@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 
-import { Box, Stack, Button, SxProps } from '@mui/material'
+import { Box, Stack, Button, SxProps, Alert } from '@mui/material'
 import { Theme } from '@mui/material/styles'
 import getConfig from 'next/config'
 import { useRouter } from 'next/router'
@@ -73,6 +73,10 @@ const CheckoutUITemplate = <T extends CrOrder | Checkout>(props: CheckoutUITempl
   }
   const showCheckoutSteps = activeStep !== steps.length
 
+  const discountThresholdMessages = checkoutGetters.getDiscountThresholdMessages(
+    checkout as Checkout
+  )
+
   const { publicRuntimeConfig } = getConfig()
   const reCaptchaKey = publicRuntimeConfig.recaptcha.reCaptchaKey
 
@@ -97,6 +101,18 @@ const CheckoutUITemplate = <T extends CrOrder | Checkout>(props: CheckoutUITempl
       >
         {activeStep != reviewStepIndex && (
           <OrderSummary {...orderSummaryArgs}>
+            {/* Discount Threshold Messages */}
+            {discountThresholdMessages && discountThresholdMessages.length > 0 && (
+              <Box display="flex" flexDirection="column" gap={1} sx={{ marginBottom: 2 }}>
+                {discountThresholdMessages.map((msg, index) =>
+                  msg ? (
+                    <Alert key={index} severity="info">
+                      {msg.message}
+                    </Alert>
+                  ) : null
+                )}
+              </Box>
+            )}
             {activeStep < buttonLabels.length && (
               <Stack direction="column" gap={2}>
                 <Button

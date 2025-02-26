@@ -76,6 +76,13 @@ const getLineItemPrice = (item: GenericItem) => {
   }
 }
 
+const getDiscountThresholdMessages = (cart: CrCart) => {
+  const discountThresholdMessages = cart?.discountThresholdMessages?.filter(
+    (message) => message?.showInCart
+  )
+  return discountThresholdMessages
+}
+
 export const cartGetters = {
   getCartItemCount,
   getCartItems,
@@ -83,4 +90,5 @@ export const cartGetters = {
   getProductFulfillmentOptions,
   getSubscriptionDetails,
   getLineItemPrice,
+  getDiscountThresholdMessages,
 }
