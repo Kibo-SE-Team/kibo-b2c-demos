@@ -472,6 +472,16 @@ export const cartResponse: CrCart = {
       quantity: 1,
     },
   ],
+  discountThresholdMessages: [
+    {
+      discountId: 47,
+      message: '10% off on all products',
+      thresholdValue: 300,
+      showOnCheckout: true,
+      showInCart: true,
+      requiresCouponCode: true,
+    },
+  ],
 }
 
 export const cartMock: { currentCart: CrCart } = {

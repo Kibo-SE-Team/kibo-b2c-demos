@@ -440,6 +440,16 @@ const checkoutResponse: Checkout = {
       handlingTotal: 0,
     },
   ],
+  discountThresholdMessages: [
+    {
+      discountId: 47,
+      message: '10% off on all products',
+      thresholdValue: 2000,
+      showOnCheckout: true,
+      showInCart: true,
+      requiresCouponCode: true,
+    },
+  ],
 }
 export const checkoutMock: { checkout: Checkout } = {
   checkout: checkoutResponse,
