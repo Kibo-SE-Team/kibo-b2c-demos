@@ -27,6 +27,7 @@ module.exports = {
       'cdn.builder.io',
       'cdn-sb.euw1.kibocommerce.com',
       'cdn-sb.sandbox.kibong-qa.com',
+      'vulcanmaterials.azureedge.net',
     ],
     deviceSizes: [
       100, 240, 340, 380, 400, 450, 500, 550, 600, 640, 750, 828, 1080, 1200, 1920, 2048, 3840,
@@ -181,7 +182,7 @@ module.exports = {
     paypal: {
       clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
       currency: process.env.NEXT_PUBLIC_PAYPAL_CURRENCY || 'USD',
-      intent: 'authorize'
+      intent: 'authorize',
     },
     builderIO: {
       apiKey: process.env.BUILDER_IO_API_KEY,

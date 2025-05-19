@@ -25,19 +25,20 @@ export const headerActionAreaStyles = {
   },
   container: {
     display: 'flex',
-    justifyContent: 'end',
+    justifyContent: 'space-between',
     alignItems: 'center',
+    position: 'relative',
   },
   searchSuggestionsWrapper: {
-    maxWidth: '65%',
-    flex: 1,
+    position: 'absolute',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    width: '50%',
     display: { xs: 'none', md: 'inline-flex' },
     alignItems: 'center',
-    // height: '100%',
   },
   logoWrapper: {
     order: 0,
-    top: '-27px',
   },
 }
 
@@ -58,15 +59,12 @@ export const kiboHeaderStyles = {
     borderBottomColor: 'grey.500',
   },
   logoStyles: {
-    // cursor: 'pointer',
-    textAlign: 'center',
+    textAlign: 'left',
     position: 'relative',
-    margin: 'auto',
-    // minHeight: '70px',
-    // width: '100%',
-    justifyContent: 'center',
+    margin: 0,
+    justifyContent: 'flex-start',
     alignItems: 'center',
-    flex: 1,
+    flex: '0 0 auto',
     backgroundColor: 'transparent',
     display: {
       xs: 'none',
